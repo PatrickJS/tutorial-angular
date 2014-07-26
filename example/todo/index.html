@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Todo List</title>
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.21/angular.js"></script>
+  <script type="text/javascript" src="app.js"></script>
+</head>
+<body ng-app="todoApp">
+<section ng-controller="TodoCtrl as todoCtrl">
+
+  <h1>Todo</h1>
+
+  <form name="todoForm" ng-submit="submit(todoCtrl.model)">
+
+    <ul>
+      <li ng-repeat="model in todoCtrl.collection">
+        {{ model.text }} <a ng-click="remove($index)">[X]</a>
+      </li>
+    </ul>
+
+    <input ng-model="todoCtrl.model" autofocus required>
+
+    <button>Add</button>
+
+  </form>
+
+  <pre>{{ todoCtrl.collection | json }}</pre>
+
+</section>
+
+
+</body>
+</html>
