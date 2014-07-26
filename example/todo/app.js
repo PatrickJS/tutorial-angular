@@ -13,10 +13,13 @@
     todoCtrl.model = null;
 
     $scope.remove = function(model) {
+
       var index = todoCtrl.collection.indexOf(model);
+
       if (index !== -1) {
         todoCtrl.collection.splice(index, 1);
       }
+
     };
 
     $scope.submit = function(text) {
@@ -31,6 +34,17 @@
 
       todoCtrl.model = null;
 
+    };
+
+    $scope.completed = function() {
+
+      var count = 0;
+
+      angular.forEach(todoCtrl.collection, function(model) {
+        count += model.done ? 1 : 0;
+      });
+
+      return count;
     };
 
   });

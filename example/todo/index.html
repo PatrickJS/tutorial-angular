@@ -14,9 +14,14 @@
   <form name="todoForm" ng-submit="submit(todoCtrl.model)">
 
     You have {{ todoCtrl.collection.length }} todos
+    <p>
+      {{ completed() }} completed
+    </p>
 
     <ul>
       <li ng-repeat="model in todoCtrl.collection | orderBy:'-created_at' ">
+
+        <input type="checkbox" ng-model="model.done">
 
         <span>{{ model.text }}</span>
 
