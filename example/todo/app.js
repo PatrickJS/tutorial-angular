@@ -12,8 +12,11 @@
 
     todoCtrl.model = null;
 
-    $scope.remove = function(index) {
-      todoCtrl.collection.splice(index, 1);
+    $scope.remove = function(model) {
+      var index = todoCtrl.collection.indexOf(model);
+      if (index !== -1) {
+        todoCtrl.collection.splice(index, 1);
+      }
     };
 
     $scope.submit = function(text) {
@@ -34,7 +37,8 @@
 
 
   app.factory('Utils', function() {
-    return {
+
+    var service = {
       uuid: function() {
         var d = new Date().getTime();
         var uuid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
@@ -45,6 +49,8 @@
         return uuid;
       }
     };
+
+    return service;
 
   });
 

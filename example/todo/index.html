@@ -6,6 +6,7 @@
   <script type="text/javascript" src="app.js"></script>
 </head>
 <body ng-app="todoApp">
+
 <section ng-controller="TodoCtrl as todoCtrl">
 
   <h1>Todo</h1>
@@ -21,7 +22,7 @@
 
         <small>{{ model.created_at | date:'mediumTime' }}</small>
 
-        <a ng-click="remove($index)">
+        <a ng-click="remove(model)">
           <b>[X]</b>
         </a>
 
