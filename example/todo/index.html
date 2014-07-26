@@ -12,9 +12,19 @@
 
   <form name="todoForm" ng-submit="submit(todoCtrl.model)">
 
+    You have {{ todoCtrl.collection.length }} todos
+
     <ul>
-      <li ng-repeat="model in todoCtrl.collection">
-        {{ model.text }} <a ng-click="remove($index)">[X]</a>
+      <li ng-repeat="model in todoCtrl.collection | orderBy:'-created_at' ">
+
+        <span>{{ model.text }}</span>
+
+        <small>{{ model.created_at | date:'mediumTime' }}</small>
+
+        <a ng-click="remove($index)">
+          <b>[X]</b>
+        </a>
+
       </li>
     </ul>
 
@@ -24,7 +34,8 @@
 
   </form>
 
-  <pre>{{ todoCtrl.collection | json }}</pre>
+  <pre>TodoCtrl.model = {{ todoCtrl.model | json }}</pre>
+  <pre>TodoCtrl.collection = {{ todoCtrl.collection | json }}</pre>
 
 </section>
 

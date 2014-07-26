@@ -20,7 +20,8 @@
 
       var model = {
         id: Utils.uuid(),
-        text: text
+        text: text,
+        created_at: new Date()
       };
 
       todoCtrl.collection.push(model);
